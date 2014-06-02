@@ -1,37 +1,45 @@
-%Add two positive integers and return the result
+%Add two integers between 0 and 100 and return the result
 function o = add( a , b)
 	%Check for valid input
-	if ( a ~> 0 | b ~> 0)
-		error('non-positive arguments to add()'
+	if ( a < 0 || b < 0 || a > 100 || b > 100)
+		error('arguments to add() out of range');
 	end
-	if ( size(a) ~= [1 1] & size(b ~= [1 1]) )
+	if ( size(a) ~= [1 1] && size(b) ~= [1 1] )
 		error('matrix arguments passed to add()');
 	end
 
 	%initialize counter
-	o = a ; 
+	o = a ;
 
-	for ctr = 1:b
+	ctr = 0;
+	while ( ctr < b) 
 		o++;
+		ctr++;
 	end
 end
 
 %!test
 %! 'Simple test'
-%! assert( add( 1, 0 ) == 0 )
+%! assert( add( 1, 0 ) == 1 )
 %! assert( add( 1, 1 ) == 2 )
 
 %!test
 %! 'Commutative?'
-%! for i = 1:10000
-%! 	a = floor( realmax * rand );
-%!	b = floor( realmax * rand );
-%!      assert( add( a , b) == add( b , a) ;
+%! for i = 1:100
+%! 	a = floor( 100 * rand );
+%!	b = floor( 100 * rand );
+%!      assert( add( a , b) == add( b , a) );
 %! end
 
-%Brute force test
+% 2x test
 %!test
-%! for i = 1:10000
-%!	assert( i , i ) = 2*i 
+%! for i = 1:100
+%!	assert( add( i , i ) = 2*i );
+%! end
+
+%!test
+%! 'Brute Force Test'
+%! for i = 1:100
+%!	assert( add( i , i ) = 2*i );
 %! end
 
