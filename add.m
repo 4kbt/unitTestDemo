@@ -39,7 +39,16 @@ end
 
 %!test
 %! 'Brute Force Test'
-%! for i = 1:100
-%!	assert( add( i , i ) = 2*i );
-%! end
+%! for i = 0:100
+%!   for j = 0:100
+%!	ctr = 0;
+%!	for k = 1:i
+%!		ctr++;
+%!	end
+%!	for k = 1:j
+%!		ctr++;
+%!	end
+%!	assert( add( i , j ) == ctr );
+%!   end %j
+%! end %i
 
