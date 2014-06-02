@@ -8,14 +8,17 @@ function o = add( a , b)
 		error('matrix arguments passed to add()');
 	end
 
-	%initialize counter
+	%initialize counters
 	o = a ;
-
 	ctr = 0;
+
+	%counting loop (add one to "o" , "b" times)
 	while ( ctr < b) 
 		o++;
 		ctr++;
 	end
+
+	%o is returned as defined in the function definition.
 end
 
 %!test
@@ -31,8 +34,8 @@ end
 %!      assert( add( a , b) == add( b , a) );
 %! end
 
-% 2x test
 %!test
+%! '2x test'
 %! for i = 1:100
 %!	assert( add( i , i ) = 2*i );
 %! end
@@ -51,4 +54,3 @@ end
 %!	assert( add( i , j ) == ctr );
 %!   end %j
 %! end %i
-
